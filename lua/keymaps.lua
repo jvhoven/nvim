@@ -50,6 +50,10 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- Better page navigation
+keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "<C-d>", "<C-d>zz")
+
 -- Plugins --
 
 -- NvimTree
@@ -81,3 +85,30 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+
+-- Toggleterm
+keymap("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts)
+keymap("n", "<leader>tv", "<cmd>ToggleTerm size=30 direction=vertical<cr>", opts)
+
+-- Gitsigns
+keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+-- Actions
+keymap('n', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+keymap('v', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+keymap('n', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+keymap('v', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+keymap('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+keymap('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+keymap('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
+keymap('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+keymap('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+keymap('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+keymap('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
+keymap('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+keymap('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+
+-- Text object
+keymap('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+keymap('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
