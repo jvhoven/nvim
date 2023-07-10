@@ -60,10 +60,11 @@ keymap("n", "<C-d>", "<C-d>zz")
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>ff", "<cmd>lua require'user.override.telescope'.project_files()<CR>", opts)
+keymap("n", "<leader>ft", "<cmd>lua require'user.override.telescope'.live_grep_project_files()<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope file_browser<CR>", opts)
+keymap("n", "<leader>fc", ":Telescope tags<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

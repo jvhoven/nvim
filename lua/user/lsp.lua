@@ -6,7 +6,7 @@ local M = {
     {
       "hrsh7th/cmp-nvim-lsp",
       commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
-    },
+    }
   },
 }
 
@@ -29,6 +29,7 @@ function M.config()
     keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
     keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
     keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    keymap(bufnr, "n", "<leader>lt", "<cdm>lua vim.lsp.buf.type_definition()<cr>", opts)
     keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
     keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
     keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)

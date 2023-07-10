@@ -1,0 +1,25 @@
+snippet irh import React hooks
+	import { use$1 } from 'react';
+
+snippet fc "Typescript React Functional Component"
+	import { type FunctionComponent } from "react";
+
+	type Props = {
+		$1
+	}
+
+	export const $2: FunctionComponent<Props> = ($3) => {
+		return (
+			$4
+		)
+	}
+
+snippet us "Typescript React useState hook"
+	const [$1, $2] = React.useState($3);
+
+snippet sts "Styled Components component"
+	import styled from "styled-components"
+
+	const $1 = styled.$2\`
+		$3
+	\`
