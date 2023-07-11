@@ -65,6 +65,12 @@ keymap("n", "<leader>ft", "<cmd>lua require'user.override.telescope'.live_grep_p
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope file_browser<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope tags<CR>", opts)
+keymap("n", "gr", function()
+  require('telescope.builtin').lsp_references()
+end, opts)
+keymap("n", "<leader>lq", function()
+  require('telescope.builtin').diagnostics({ bufnr = 0 })
+end, opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

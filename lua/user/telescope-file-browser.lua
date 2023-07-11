@@ -1,4 +1,3 @@
-
 local M = {
   "nvim-telescope/telescope-file-browser.nvim",
   commit = "e03ff55962417b69c85ef41424079bb0580546ba",
