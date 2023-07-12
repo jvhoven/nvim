@@ -8,6 +8,11 @@ local M = {
       commit = "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
       lazy = true,
     },
+    {
+      "jose-elias-alvarez/typescript.nvim",
+      commit = "de304087e6e49981fde01af8ccc5b21e8519306f",
+      lazy = true,
+    },
   },
 }
 
@@ -30,6 +35,7 @@ function M.config()
       formatting.stylua,
       formatting.google_java_format,
       diagnostics.flake8,
+      require "typescript.extensions.null-ls.code-actions",
     },
   }
 end
