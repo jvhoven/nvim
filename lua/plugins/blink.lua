@@ -1,7 +1,7 @@
 return {
 	'saghen/blink.cmp',
 	-- optional: provides snippets for the snippet source
-	dependencies = { 'rafamadriz/friendly-snippets' },
+	dependencies = { 'rafamadriz/friendly-snippets', 'onsails/lspkind.nvim' },
 
 	-- use a release tag to download pre-built binaries
 	version = '1.*',
@@ -34,7 +34,33 @@ return {
 		},
 
 		-- (Default) Only show the documentation popup when manually triggered
-		completion = { documentation = { auto_show = false } },
+		completion = { 
+			documentation = { auto_show = false },
+			menu = {
+				draw = {
+					kind_icon = {
+						ellipsis = false,
+						text = function(ctx)
+							return require('lspkind').symbolic(ctx.kind, {
+								mode = 'symbol',
+							})
+						end
+					},
+
+					columns = { { "kind_icon" }, { "label", gap = 1 } },
+					components = {
+						label = {
+							text = function (ctx)
+								return require("colorful-menu").blink_components_text(ctx)
+							end,
+							highlight = function (ctx)
+								return require("colorful-menu").blink_components_highlight(ctx)
+							end
+						}
+					}
+				}
+			}
+		},
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -49,27 +75,5 @@ return {
 		-- See the fuzzy documentation for more information
 		fuzzy = { implementation = "prefer_rust_with_warning" }
 	},
-	opts_extend = { "sources.default" },
-	config = function ()
-		require("blink.cmp").setup({
-			completion = {
-				menu = {
-					draw = {
-						columns = { { "kind_icon" }, { "label", gap = 1 } },
-						components = {
-							label = {
-								text = function (ctx)
-									return require("colorful-menu").blink_components_text(ctx)
-								end,
-								highlight = function (ctx)
-									return require("colorful-menu").blink_components_highlight(ctx)
-								end
-							}
-						}
-					}
-				}
-			}
-
-		})
-	end
+	opts_extend = { "sources.default" }
 }
